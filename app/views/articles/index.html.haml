@@ -4,6 +4,10 @@
     New Article
   %h1 Articles
 
+%p
+  - tag_cloud Tag.includes(:taggings).all, %w[sm md lg] do |tag, c|
+    = link_to tag.name, tag_path(tag), class:"#{c} cloud"
+
 = render @articles
 
 -#.table-responsive

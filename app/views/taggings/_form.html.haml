@@ -1,0 +1,9 @@
+= simple_form_for(@tagging) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :tag
+    = f.association :article
+
+  .form-actions
+    = f.button :submit

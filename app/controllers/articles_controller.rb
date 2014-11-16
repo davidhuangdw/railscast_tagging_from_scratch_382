@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
+    @articles = Article.includes(:tags)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -78,6 +78,6 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:name, :published_on, :content)
+      params.require(:article).permit(:name, :published_on, :content, :tag_list)
     end
 end

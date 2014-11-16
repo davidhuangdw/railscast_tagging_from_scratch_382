@@ -1,4 +1,5 @@
 %h2= article.name
+
 %p
   = article.published_on
   = link_to 'Show', article
@@ -6,3 +7,9 @@
   = link_to 'Destroy', article, :data => { confirm: 'Are you sure?' }, :method => :delete
 %p
   = article.content
+
+%p
+  - unless article.tags.empty?
+    Tags:
+    - for tag in article.tags
+      = link_to tag.name, tag_path(tag)
